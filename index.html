@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychological Testing Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <h1>Psychological Test Platform</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-back" id="backButton" onclick="goBack()" style="display: none;">
+                        <i class="fas fa-arrow-left"></i>
+                        Back
+                    </button>
+                    <div class="progress-container">
+                        <div class="progress-info">
+                            <span id="progressText">Welcome</span>
+                            <span id="progressCount">0/7</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Screen -->
+            <div class="screen active" id="welcomeScreen">
+                <div class="welcome-card">
+                    <div class="welcome-header">
+                        <div class="welcome-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h2>Welcome to Your Psychological Assessment</h2>
+                        <p>Discover your personality, intelligence, and decision-making style through our comprehensive testing suite.</p>
+                    </div>
+                    <div class="assessment-overview">
+                        <h3>What You'll Discover:</h3>
+                        <div class="overview-grid">
+                            <div class="overview-item">
+                                <i class="fas fa-user"></i>
+                                <span>Personality Type</span>
+                            </div>
+                            <div class="overview-item">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Intelligence Style</span>
+                            </div>
+                            <div class="overview-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>Career Interests</span>
+                            </div>
+                            <div class="overview-item">
+                                <i class="fas fa-balance-scale"></i>
+                                <span>Decision Making</span>
+                            </div>
+                            <div class="overview-item">
+                                <i class="fas fa-heart"></i>
+                                <span>Life Priorities</span>
+                            </div>
+                            <div class="overview-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Learning Style</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="welcome-actions">
+                        <button class="btn-primary btn-large" onclick="startTests()">
+                            <i class="fas fa-play"></i>
+                            Start Assessment
+                            <span class="btn-subtitle">~15 minutes</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Screens -->
+            <div class="screen" id="mbtiScreen">
+                <div class="test-card">
+                    <div class="test-header">
+                        <div class="test-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="test-info">
+                            <h2>MBTI Personality Test</h2>
+                            <p>Select your personality type based on the Myers-Briggs Type Indicator</p>
+                            <div class="test-meta">
+                                <span class="test-step">Step 1 of 7</span>
+                                <span class="test-time">~2 min</span>
+                            </div>
+                        </div>
+                    </div>
+                <div class="test-options">
+                    <div class="option-card" data-value="ISTJ">
+                        <h3>ISTJ</h3>
+                        <p>આંતરિક + અનુભવ + નિર્ણય + આયોજન જવાબદાર, નિર્ણય અને નિયમિત વ્યક્તિ</p>
+                    </div>
+                    <div class="option-card" data-value="ISFJ">
+                        <h3>ISFJ</h3>
+                        <p>આંતરિક + અનુભવ + લાગણી + આયોજન સેવા આપનાર, સંવેદન રાખનાર</p>
+                    </div>
+                    <div class="option-card" data-value="INFJ">
+                        <h3>INFJ</h3>
+                        <p>આંતરિક + કલ્પના + લાગણી + આયોજન મર્યાદિત, સંકેતવાળા નેતા</p>
+                    </div>
+                    <div class="option-card" data-value="INTJ">
+                        <h3>INTJ</h3>
+                        <p>આંતરિક + કલ્પના + નિર્ણય + આયોજન વિચારક, વ્યૂહરચનાકાર</p>
+                    </div>
+                    <div class="option-card" data-value="ISTP">
+                        <h3>ISTP</h3>
+                        <p>આંતરિક + અનુભવ + નિર્ણય + અંગત પ્રકૃતિશીલ, ટેકનિકલ નિપુણ</p>
+                    </div>
+                    <div class="option-card" data-value="ISFP">
+                        <h3>ISFP</h3>
+                        <p>આંતરિક + અનુભવ + લાગણી + અંગત શાંત પ્રેમી, કલાપ્રેમી</p>
+                    </div>
+                    <div class="option-card" data-value="INFP">
+                        <h3>INFP</h3>
+                        <p>આંતરિક + કલ્પના + લાગણી + અંગત સપનાવાળા, મહત્વસ્વ</p>
+                    </div>
+                    <div class="option-card" data-value="INTP">
+                        <h3>INTP</h3>
+                        <p>આંતરિક + કલ્પના + નિર્ણય + અંગત વિચારક, કોણીપણા કરનાર</p>
+                    </div>
+                    <div class="option-card" data-value="ESTP">
+                        <h3>ESTP</h3>
+                        <p>બહારમુખી + અનુભવ + નિર્ણય + અંગત જીવન લેનાર, તરત પરંતુ બરવાર</p>
+                    </div>
+                    <div class="option-card" data-value="ESFP">
+                        <h3>ESFP</h3>
+                        <p>બહારમુખી + અનુભવ + લાગણી + અંગત પ્રેમકુશળ, મંજૂરીની</p>
+                    </div>
+                    <div class="option-card" data-value="ENFP">
+                        <h3>ENFP</h3>
+                        <p>બહારમુખી + કલ્પના + લાગણી + અંગત ઉત્સાહી, પ્રેરણાદાયી</p>
+                    </div>
+                    <div class="option-card" data-value="ENTP">
+                        <h3>ENTP</h3>
+                        <p>બહારમુખી + કલ્પના + નિર્ણય + અંગત પ્રયોગકાર, નવીન વિચારક</p>
+                    </div>
+                    <div class="option-card" data-value="ESTJ">
+                        <h3>ESTJ</h3>
+                        <p>બહારમુખી + અનુભવ + નિર્ણય + આયોજન વ્યવસ્થાપક, નેતા</p>
+                    </div>
+                    <div class="option-card" data-value="ESFJ">
+                        <h3>ESFJ</h3>
+                        <p>બહારમુખી + અનુભવ + લાગણી + આયોજન સંગઠક, સમર્થક લોકો માટે કામ કરનાર</p>
+                    </div>
+                    <div class="option-card" data-value="ENFJ">
+                        <h3>ENFJ</h3>
+                        <p>બહારમુખી + કલ્પના + લાગણી + આયોજન નિર્દેશ, પ્રેરક નેતા</p>
+                    </div>
+                    <div class="option-card" data-value="ENTJ">
+                        <h3>ENTJ</h3>
+                        <p>બહારમુખી + કલ્પના + નિર્ણય + આયોજન કમાન્ડર, CEO મટિરિયલ</p>
+                    </div>
+                </div>
+                    <div class="test-actions">
+                        <button class="btn-next" onclick="nextTest()" disabled>
+                            Next Test
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Multiple Intelligence Test -->
+            <div class="screen" id="intelligenceScreen">
+                <div class="test-card">
+                    <div class="test-header">
+                        <div class="test-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="test-info">
+                            <h2>Multiple Intelligence Test</h2>
+                            <p>Select your dominant intelligence type</p>
+                            <div class="test-meta">
+                                <span class="test-step">Step 2 of 7</span>
+                                <span class="test-time">~2 min</span>
+                            </div>
+                        </div>
+                    </div>
+                <div class="test-options">
+                    <div class="option-card" data-value="linguistic">
+                        <h3>Linguistic Intelligence</h3>
+                        <p>ભાષાકીય બુદ્ધિ - વાણીની જાણકારી માટે - લાગણી, કોઈપણા, કોઈપણા નિપુણ</p>
+                    </div>
+                    <div class="option-card" data-value="logical">
+                        <h3>Logical-Mathematical Intelligence</h3>
+                        <p>તર્કસંગત અને ગણિત બુદ્ધિ - તર્કિક, ગણિતિક, વૈજ્ઞાનિક</p>
+                    </div>
+                    <div class="option-card" data-value="musical">
+                        <h3>Musical Intelligence</h3>
+                        <p>સંગીત બુદ્ધિ - સંગીત, સંગીતકાર, સંગીત નિપુણ</p>
+                    </div>
+                    <div class="option-card" data-value="bodily">
+                        <h3>Bodily-Kinesthetic Intelligence</h3>
+                        <p>શારીરિક-ગતિશીલ બુદ્ધિ - શરીરનું કાર્ય અને સ્પર્શ કરી શકે છે</p>
+                    </div>
+                    <div class="option-card" data-value="visual">
+                        <h3>Visual-Spatial Intelligence</h3>
+                        <p>દ્રશ્યાત્મક બુદ્ધિ - દ્રશ્યાત્મક વાતો જોવાની, દેખાવ, દિશા, આંતર, દેખી, કલ્પનાની બનાવટી કાર્ય</p>
+                    </div>
+                    <div class="option-card" data-value="interpersonal">
+                        <h3>Interpersonal Intelligence</h3>
+                        <p>માનવીય સંબંધ બુદ્ધિ - અન્ય લોકોની લાગણી, વલણ અને જરૂરિયાતો સમજવાની કાર્ય</p>
+                    </div>
+                    <div class="option-card" data-value="intrapersonal">
+                        <h3>Intrapersonal Intelligence</h3>
+                        <p>આત્મ-જ્ઞાન બુદ્ધિ - પોતાની જાતને સારી રીતે સમજવાની - પોતાના લક્ષ, ભાવનાઓ, મજબૂતી - નબળાઈ જાણવાની</p>
+                    </div>
+                    <div class="option-card" data-value="naturalistic">
+                        <h3>Naturalistic Intelligence</h3>
+                        <p>કુદરતી બુદ્ધિ - પ્રકૃતિ અને તેના કાર્યો સાથે જોડાઈ સંબંધ રાખવા</p>
+                    </div>
+                    <div class="option-card" data-value="existential">
+                        <h3>Existential Intelligence</h3>
+                        <p>અસ્તિત્વવાદી બુદ્ધિ - અસ્તિત્વ બુદ્ધિ કલ્યાણકારી માટે કાર્યક્રમ નિર્દેશ</p>
+                    </div>
+                </div>
+                    <div class="test-actions">
+                        <button class="btn-next" onclick="nextTest()" disabled>
+                            Next Test
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Big Five Test -->
+            <div class="screen" id="bigFiveScreen">
+                <div class="test-card">
+                    <div class="test-header">
+                        <div class="test-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="test-info">
+                            <h2>Big Five Personality Test</h2>
+                            <p>Select your dominant personality trait</p>
+                            <div class="test-meta">
+                                <span class="test-step">Step 3 of 7</span>
+                                <span class="test-time">~2 min</span>
+                            </div>
+                        </div>
+                    </div>
+                <div class="test-options">
+                    <div class="option-card" data-value="openness">
+                        <h3>Openness to Experience</h3>
+                        <p>ખુલ્લુપણ - નવી સીખવા, કલ્પનાશક્તિ અને સર્જનાત્મકતામાં રસ</p>
+                    </div>
+                    <div class="option-card" data-value="conscientiousness">
+                        <h3>Conscientiousness</h3>
+                        <p>જવાબદારી - નિષ્ઠા, જવાબદારી અને સંગઠિત રહેવાની તાકાત</p>
+                    </div>
+                    <div class="option-card" data-value="extraversion">
+                        <h3>Extraversion</h3>
+                        <p>બહિર્મુખતા - બાહ્યમુખી હોવું અને લોકો સાથે સમય પસાર કરવો ગમે</p>
+                    </div>
+                    <div class="option-card" data-value="agreeableness">
+                        <h3>Agreeableness</h3>
+                        <p>સહમતિ - દયાળુ, દયાળુ અને બીજાઓના કરવાના હોવું</p>
+                    </div>
+                    <div class="option-card" data-value="neuroticism">
+                        <h3>Neuroticism</h3>
+                        <p>ભાવનાત્મક સ્થિરતા - નિર્ણય, દુઃખ અને તણાવમાં આવવાની પ્રવૃત્તિ</p>
+                    </div>
+                </div>
+                    <div class="test-actions">
+                        <button class="btn-next" onclick="nextTest()" disabled>
+                            Next Test
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIASEC Test -->
+            <div class="screen" id="riasecScreen">
+                <div class="test-card">
+                    <div class="test-header">
+                        <div class="test-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="test-info">
+                            <h2>RIASEC Career Interest Test</h2>
+                            <p>Select your career interest type</p>
+                            <div class="test-meta">
+                                <span class="test-step">Step 4 of 7</span>
+                                <span class="test-time">~2 min</span>
+                            </div>
+                        </div>
+                    </div>
+                <div class="test-options">
+                    <div class="option-card" data-value="realistic">
+                        <h3>Realistic</h3>
+                        <p>વાસ્તવિક / હાથની કામ કરનાર - કસ્તકાર, મકાનિક, એન્જિનિયર, કૃષિકાર, વિજ્ઞાન</p>
+                    </div>
+                    <div class="option-card" data-value="investigative">
+                        <h3>Investigative</h3>
+                        <p>તપાસનીશ / વૈજ્ઞાનિક - વિજ્ઞાન, સંશોધન, ગણિતશાસ્ત્ર, પેટ્રિક, પેન્ટિંગ, ડિઝાઇન, આર્કિટેક્ચર</p>
+                    </div>
+                    <div class="option-card" data-value="artistic">
+                        <h3>Artistic</h3>
+                        <p>કલાત્મક - કલા, લેખન, વિઝ્યુઅલ, સંગીત, નિર્માણ, સેવા, કાર્યક્રમ, મેનેજમેન્ટ</p>
+                    </div>
+                    <div class="option-card" data-value="social">
+                        <h3>Social</h3>
+                        <p>સામાજિક / સહાયક - વિજ્ઞાન, સેવા, કાર્યક્રમ સંચાલન, નર્સિંગ, મેનેજમેન્ટ</p>
+                    </div>
+                    <div class="option-card" data-value="enterprising">
+                        <h3>Enterprising</h3>
+                        <p>વ્યવસાયિક / નેતૃત્વકર્તા - વ્યવસાય, વેચાણ, મેનેજમેન્ટ, રાજકારણ</p>
+                    </div>
+                    <div class="option-card" data-value="conventional">
+                        <h3>Conventional</h3>
+                        <p>પરંપરાગત / સંગઠિત - ઓફિસ કામ, ડેટા એન્ટ્રી, એકાઉન્ટિંગ, બેંકિંગ</p>
+                    </div>
+                </div>
+                    <div class="test-actions">
+                        <button class="btn-next" onclick="nextTest()" disabled>
+                            Next Test
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decision Making Test -->
+            <div class="screen" id="decisionScreen">
+                <div class="test-card">
+                    <div class="test-header">
+                        <div class="test-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div class="test-info">
+                            <h2>Decision Making Style Test</h2>
+                            <p>Select your decision-making style</p>
+                            <div class="test-meta">
+                                <span class="test-step">Step 5 of 7</span>
+                                <span class="test-time">~2 min</span>
+                            </div>
+                        </div>
+                    </div>
+                <div class="test-options">
+                    <div class="option-card" data-value="rational">
+                        <h3>Rational</h3>
+                        <p>તર્કસંગત - તર્કના આધારે નિર્ણય</p>
+                    </div>
+                    <div class="option-card" data-value="intuitive">
+                        <h3>Intuitive</h3>
+                        <p>સ્વાભાવિક - આંતરિક અનુભવો પર આધાર રાખવું</p>
+                    </div>
+                    <div class="option-card" data-value="dependent">
+                        <h3>Dependent</h3>
+                        <p>આશ્રિત - બીજા પર આધાર રાખીને નિર્ણય લેવો</p>
+                    </div>
+                    <div class="option-card" data-value="avoidant">
+                        <h3>Avoidant</h3>
+                        <p>ટાળનારી - નિર્ણયમાંથી દૂર ભાગવું</p>
+                    </div>
+                    <div class="option-card" data-value="spontaneous">
+                        <h3>Spontaneous</h3>
+                        <p>અચાનક - ઝડપથી, નિર્ણય કર્યા વગર નિર્ણય લેવો</p>
+                    </div>
+                </div>
+                    <div class="test-actions">
+                        <button class="btn-next" onclick="nextTest()" disabled>
+                            Next Test
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Life Situation Test -->
+            <div class="screen" id="lifeScreen">
+                <div class="test-card">
+                    <div class="test-header">
+                        <div class="test-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="test-info">
+                            <h2>Life Situation Assessment</h2>
+                            <p>Select your current life focus</p>
+                            <div class="test-meta">
+                                <span class="test-step">Step 6 of 7</span>
+                                <span class="test-time">~2 min</span>
+                            </div>
+                        </div>
+                    </div>
+                <div class="test-options">
+                    <div class="option-card" data-value="social">
+                        <h3>Social Life</h3>
+                        <p>સામાજિક પરિસ્થિતિ - સામાજિક સંબંધો અને મિત્રતા</p>
+                    </div>
+                    <div class="option-card" data-value="economic">
+                        <h3>Economic Life</h3>
+                        <p>આર્થિક પરિસ્થિતિ - નાણાકીય સ્થિતિ અને કારકિર્દી</p>
+                    </div>
+                    <div class="option-card" data-value="personal">
+                        <h3>Personal Life</h3>
+                        <p>ભૌગોલિક પરિસ્થિતિ - વ્યક્તિગત વિકાસ અને આત્મસુધારણા</p>
+                    </div>
+                </div>
+                    <div class="test-actions">
+                        <button class="btn-next" onclick="nextTest()" disabled>
+                            Next Test
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VARK Test -->
+            <div class="screen" id="varkScreen">
+                <div class="test-card">
+                    <div class="test-header">
+                        <div class="test-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="test-info">
+                            <h2>VARK Learning Style Test</h2>
+                            <p>Select your preferred learning style</p>
+                            <div class="test-meta">
+                                <span class="test-step">Step 7 of 7</span>
+                                <span class="test-time">~2 min</span>
+                            </div>
+                        </div>
+                    </div>
+                <div class="test-options">
+                    <div class="option-card" data-value="visual">
+                        <h3>Visual</h3>
+                        <p>દૃશ્ય આધારિત - ચાર્ટ, ચાર્ટ, ડ્રો, પ્રેપ વગેરે જોઈને શીખવાનું સરળ લાગે</p>
+                    </div>
+                    <div class="option-card" data-value="auditory">
+                        <h3>Auditory</h3>
+                        <p>શ્રાવ્ય આધારિત - વાર્તા, હેકસ, ઓડિયો દ્વારા સાંભળીને વધુ સીખો</p>
+                    </div>
+                    <div class="option-card" data-value="reading">
+                        <h3>Reading/Writing</h3>
+                        <p>વાંચન / લેખન આધારિત - નોંધ લખવા અને વાંચવાથી વધુ સીખો</p>
+                    </div>
+                    <div class="option-card" data-value="kinesthetic">
+                        <h3>Kinesthetic</h3>
+                        <p>સ્પર્શ / અનુભવની રીતે - પ્રેક્ટિકલ, હાથ દ્વારા , અનુભવ પરથી સીખો</p>
+                    </div>
+                </div>
+                    <div class="test-actions">
+                        <button class="btn-next" onclick="generateReport()" disabled>
+                            Generate Report
+                            <i class="fas fa-chart-pie"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div class="screen" id="resultsScreen">
+                <div class="results-header">
+                    <h2><i class="fas fa-chart-pie"></i> Your Psychological Profile Report</h2>
+                    <p>Complete assessment results based on your selections</p>
+                </div>
+                <div class="results-content" id="resultsContent">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+                <div class="results-actions">
+                    <button class="btn-primary" onclick="downloadReport()">
+                        <i class="fas fa-download"></i>
+                        Download Report
+                    </button>
+                    <button class="btn-secondary" onclick="restartTests()">
+                        <i class="fas fa-redo"></i>
+                        Retake Tests
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="test-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
