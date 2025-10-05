@@ -44,14 +44,16 @@ body::before {
 
 /* Header Styles */
 .header {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
+    background: rgba(0, 0, 0, 0.3);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 12px 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     position: sticky;
     top: 0;
     z-index: 100;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
 }
 
 .header-content {
@@ -76,14 +78,18 @@ body::before {
 .logo i {
     font-size: 2rem;
     color: #fff;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
 }
 
 .logo h1 {
     font-size: 1.8rem;
     font-weight: 700;
     color: #fff;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.5px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Back Button */
@@ -865,16 +871,36 @@ body::before {
         padding: 15px;
     }
     
+    .header {
+        padding: 8px 15px;
+        min-height: 50px;
+    }
+    
     .header-content {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
+        flex-direction: row;
+        gap: 10px;
+        text-align: left;
+        align-items: center;
+    }
+    
+    .logo {
+        gap: 8px;
+    }
+    
+    .logo h1 {
+        font-size: 1.2rem;
+        line-height: 1.2;
+    }
+    
+    .logo i {
+        font-size: 1.5rem;
     }
     
     .header-actions {
-        flex-direction: column;
-        gap: 15px;
-        width: 100%;
+        flex-direction: row;
+        gap: 10px;
+        width: auto;
+        flex-shrink: 0;
     }
     
     .progress-container {
@@ -932,6 +958,33 @@ body::before {
 }
 
 @media (max-width: 480px) {
+    .header {
+        padding: 6px 10px;
+        min-height: 45px;
+    }
+    
+    .logo h1 {
+        font-size: 1rem;
+        line-height: 1.1;
+    }
+    
+    .logo i {
+        font-size: 1.2rem;
+    }
+    
+    .logo {
+        gap: 6px;
+    }
+    
+    .header-actions {
+        gap: 8px;
+    }
+    
+    .btn-back {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+    
     .welcome-card, .test-card {
         margin: 5px;
     }
@@ -966,19 +1019,10 @@ body::before {
         font-size: 1.4rem;
     }
     
-    .welcome-header p {
-        font-size: 0.9rem;
-    }
-    
-    .test-info h2 {
-        font-size: 1.1rem;
-    }
-    
     .overview-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
-    
     .overview-item {
         padding: 10px;
     }
@@ -989,6 +1033,47 @@ body::before {
     
     .overview-item span {
         font-size: 0.85rem;
+    }
+}
+
+/* Extra Small Phones */
+@media (max-width: 360px) {
+    .header {
+        padding: 5px 8px;
+        min-height: 40px;
+    }
+    
+    .logo h1 {
+        font-size: 0.85rem;
+        line-height: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px;
+    }
+    
+    .logo i {
+        font-size: 1rem;
+    }
+    
+    .logo {
+        gap: 4px;
+        min-width: 0;
+        flex: 1;
+    }
+    
+    .header-actions {
+        gap: 6px;
+        flex-shrink: 0;
+    }
+    
+    .btn-back {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+    }
+    
+    .container {
+        padding: 10px;
     }
 }
 
